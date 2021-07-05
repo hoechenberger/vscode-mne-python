@@ -1,0 +1,75 @@
+{
+  "name": "mne-python-extension",
+  "displayName": "MNE-Python",
+  "description": "Snippets & more for MNE-Python.",
+  "icon": "images/mne.png",
+  "version": "2021.1.0",
+  "engines": {
+    "vscode": "^1.57.0"
+  },
+  "publisher": "hoechenberger",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/hoechenberger/vscode-mne-python.git"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onCommand:mne-python-extension.viewRaw",
+    "onCommand:mne-python-extension.version",
+    "onCommand:mne-python-extension.sysInfo"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+      "snippets": [
+          {
+              "language": "python",
+              "path": "./snippets/snippets.code-snippets"
+          }
+      ],
+    "commands": [
+      {
+        "command": "mne-python-extension.viewRaw",
+        "title": "View in MNE-Python"
+      },
+      {
+        "command": "mne-python-extension.version",
+        "title": "View installed MNE-Python version"
+      },
+      {
+        "command": "mne-python-extension.sysInfo",
+        "title": "View installed MNE-Python system info"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+          {
+              "when": "!explorerResourceIsFolder &&  resourceFilename =~ /.*\\.fif/",
+              "command": "mne-python-extension.viewRaw"
+          }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.57.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  }
+}
