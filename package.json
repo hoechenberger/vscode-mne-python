@@ -3,14 +3,14 @@
   "displayName": "MNE-Python",
   "description": "Snippets & more for MNE-Python.",
   "icon": "images/mne.png",
-  "version": "2021.1.0",
+  "version": "2021.2.0",
   "engines": {
     "vscode": "^1.57.0"
   },
   "publisher": "hoechenberger",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/hoechenberger/vscode-mne-python.git"
+    "type": "git",
+    "url": "https://github.com/hoechenberger/vscode-mne-python.git"
   },
   "categories": [
     "Snippets"
@@ -22,12 +22,12 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-      "snippets": [
-          {
-              "language": "python",
-              "path": "./snippets/snippets.code-snippets"
-          }
-      ],
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ],
     "commands": [
       {
         "command": "mne-python-extension.viewRaw",
@@ -44,10 +44,10 @@
     ],
     "menus": {
       "explorer/context": [
-          {
-              "when": "!explorerResourceIsFolder &&  resourceFilename =~ /.*\\.fif/",
-              "command": "mne-python-extension.viewRaw"
-          }
+        {
+          "when": "!explorerResourceIsFolder &&  resourceFilename =~ /.*\\.fif/",
+          "command": "mne-python-extension.viewRaw"
+        }
       ]
     }
   },
