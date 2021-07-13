@@ -30,7 +30,7 @@
 			"events = mne.find_events(raw, stim_channel='STI 014')",
 			"event_id = {'auditory/left': 1, 'auditory/right': 2, 'visual/left': 3,\n            'visual/right': 4, 'face': 5, 'buttonpress': 32}",
 			"",
-			"epochs = mne.Epochs(raw, events=events, event_id=event_id,\n                    tmin=${2:-0.2}, tmax=${3:0.5}, baseline=(${4:None}, ${5:0})\n                    preload=${7|True,False|})",
+			"epochs = mne.Epochs(raw, events=events, event_id=event_id,\n                    tmin=${2:-0.2}, tmax=${3:0.5}, baseline=(${4:None}, ${5:0}),\n                    preload=${7|True,False|})",
 			"$0"
 		],
 		"description": "Create epochs from the MNE \"sample\" subject."
