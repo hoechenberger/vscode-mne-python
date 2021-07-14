@@ -3,7 +3,7 @@
   "displayName": "MNE-Python",
   "description": "Snippets & more for MNE-Python.",
   "icon": "images/mne.png",
-  "version": "2021.2.0",
+  "version": "2021.3.0",
   "engines": {
     "vscode": "^1.57.0"
   },
