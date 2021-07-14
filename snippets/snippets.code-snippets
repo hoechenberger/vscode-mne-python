@@ -1,6 +1,7 @@
 {
 	"MNE: Load \"sample\" raw data": {
 		"body": [
+			"# %%",
 			"from pathlib import Path",
 			"import mne",
 			"",
@@ -8,15 +9,17 @@
 			"sample_dir = Path(mne.datasets.sample.data_path())",
 			"sample_fname = sample_dir / 'MEG' / 'sample' / 'sample_audvis_raw.fif'",
 			"",
-			"raw = mne.io.read_raw_fif(sample_fname, preload=${1|True,False|}), ",
+			"raw = mne.io.read_raw_fif(sample_fname, preload=${1|True,False|})",
 			"${2:raw.crop(tmax=60)}",
 			"",
 			"$0"
 		],
-		"description": "Load continuous data from the MNE \"sample\" subject."
+		"description": "Load continuous data from the MNE \"sample\" subject.",
+		"prefix": "import mne"
 	},
 	"MNE: Create \"sample\" epochs": {
 		"body": [
+			"# %%",
 			"from pathlib import Path",
 			"import mne",
 			"",
@@ -33,6 +36,40 @@
 			"epochs = mne.Epochs(raw, events=events, event_id=event_id,\n                    tmin=${2:-0.2}, tmax=${3:0.5}, baseline=(${4:None}, ${5:0}),\n                    preload=${7|True,False|})",
 			"$0"
 		],
-		"description": "Create epochs from the MNE \"sample\" subject."
+		"description": "Create epochs from the MNE \"sample\" subject.",
+		"prefix": "import mne"
+	},
+	"MNE: Plot \"sample\" SourceEstimate": {
+		"body": [
+			"# %%",
+			"from pathlib import Path",
+			"import mne",
+			"",
+			"",
+			"mne.viz.set_3d_backend('pyvista')",
+			"",
+			"sample_dir = Path(mne.datasets.sample.data_path())",
+			"stc_fname = sample_dir / 'MEG' / 'sample' / 'sample_audvis-meg'  # omit suffix",
+			"fs_subject = 'sample'",
+			"fs_subjects_dir = sample_dir / 'subjects'",
+			"",
+			"stc = mne.read_source_estimate(fname=stc_fname, subject=fs_subject)",
+			"",
+			"brain = stc.plot(",
+			"    subject=fs_subject,",
+			"    subjects_dir=fs_subjects_dir,",
+			"    initial_time=0.1,",
+			"    views=('lateral', 'medial'),",
+			"    hemi='split',",
+			"    surface='inflated',",
+			"    size=(800, 500),",
+			"    background='white',",
+			"    time_viewer=True,",
+			"    show_traces=True,",
+			"    clim=dict(kind='value', lims=[3, 6, 9])",
+			")"
+		],
+		"description": "Create an STC plot for the MNE \"sample\" subject.",
+		"prefix": "import mne"
 	}
 }
